@@ -1,6 +1,12 @@
+#importa nella directory il file excel con l'elenco dei nomi, il file va salvato in csv
+#scegli come separatore il punto e virgola (;)
+
 library(tidyverse)
 
-elenco <- read.csv("ElencoVaccinatori.csv", sep = ";")
+nome_file <- "Scrivi qui il nome del file con estensione csv"
+mail <- "Scegli la parte finale della mail"
+
+elenco <- read.csv(nome_file, sep = ";")
 
 elenco_mail <- matrix(ncol = 1, nrow = nrow(elenco))
 
@@ -20,10 +26,12 @@ for (i in 1:nrow(elenco)){
                                        simplify = F)[[1]],
                        collapse = ""))), 2)
                  },
-             elenco[i,1], "@aslto3.piemonte.it")), " ", ""))
+             elenco[i,1], mail)), " ", ""))
   
 }
 
 elenco_mail <- data.frame(elenco_mail)
 
 write.csv(elenco_mail, file = "Elenco_mail", row.names = F, quote = F, col.names = F)
+
+#puoi estrarre il file con le e-mail direttamente dalla directory di R-Studio
