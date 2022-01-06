@@ -1,0 +1,29 @@
+library(tidyverse)
+
+elenco <- read.csv("ElencoVaccinatori.csv", sep = ";")
+
+elenco_mail <- matrix(ncol = 1, nrow = nrow(elenco))
+
+
+for (i in 1:nrow(elenco)){
+         elenco_mail[i]<-(str_replace_all(
+           str_to_lower(paste0(
+             str_extract(elenco[i, 2], "^."),
+             if (!(str_detect(elenco[i, 2], " ."))) {
+               print("")
+               } else {
+                 substring(print(
+                   str_to_lower(
+                     paste(
+                       str_extract_all(str_to_title(elenco[i, 2]),
+                                       pattern = "[A-Z]",
+                                       simplify = F)[[1]],
+                       collapse = ""))), 2)
+                 },
+             elenco[i,1], "@aslto3.piemonte.it")), " ", ""))
+  
+}
+
+elenco_mail <- data.frame(elenco_mail)
+
+write.csv(elenco_mail, file = "Elenco_mail", row.names = F, quote = F, col.names = F)
