@@ -1,5 +1,5 @@
 # Mini Progetti R
-In questa repository metterò tutti i mini progetti che ho scritto i R.<br>
+In questa repository metterò tutti i mini progetti che ho scritto in R.<br>
 
 ## Regioni Italiane
 In questo progetto mi sono concentrato sulla rappresentazione cartografica dell'Italia. <br>
